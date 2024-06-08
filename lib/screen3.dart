@@ -12,7 +12,7 @@ class Screen3 extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Center(
               child: Image.asset(
-                'assets/l.png',
+                'assets/con1.png',
                 height: 50,
                 width: 100,
               ),
@@ -48,13 +48,13 @@ class Screen3 extends StatelessWidget {
                       height: 30,
                       width: 30,
                       decoration: BoxDecoration(
-                        color: Colors.pink.withOpacity(0.2),
+                        color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.favorite,
                         size: 20,
-                        color: Colors.red,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
@@ -63,7 +63,7 @@ class Screen3 extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'assets/shirt.png',
+            'assets/buy.png',
             height: 500,
             width: 250,
           ),

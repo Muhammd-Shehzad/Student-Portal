@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grid_view_builder/DetailsScreen.dart';
+import 'package:grid_view_builder/fav_icom.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List shirt = [
+    'assets/1.png',
+    'assets/2.png',
+    'assets/3.png',
+    'assets/shirt.png',
+    'assets/5.png',
+  ];
+  List Names = ['Adidas', 'Nicki', 'Guchi', 'j.', 'Puma'];
+  List Price = ['\$20', '\$30', '\$40', '\$50', '\$60'];
+
   @override
   Widget build(context) {
     return Scaffold(
@@ -63,81 +74,77 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: GridView.builder(
-        itemCount: 6,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 20,
-            childAspectRatio: 1 / 1.5),
-        itemBuilder: (context, index) => Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      margin: EdgeInsets.all(1.5),
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.pink.withOpacity(0.3),
-                      ),
-                      child: Icon(
-                        Icons.favorite,
-                        size: 20,
-                        color: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(5),
+        child: GridView.builder(
+          itemCount: 5,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 20,
+              childAspectRatio: 1 / 1.5),
+          itemBuilder: (context, index) => Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  children: [
+                    favIcon(),
+                    Image.asset(
+                      shirt[index],
+                      height: 150,
+                      width: 100,
+                    ),
+                    Text(
+                      Names[index],
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      Price[index],
+                      style: TextStyle(color: Colors.pink.withOpacity(1)),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Screen2(
+                        name: Names[index],
+                        price: Price[index],
+                        image: shirt[index],
                       ),
                     ),
-                  ),
-                  Image.asset(
-                    'assets/shirt.png',
-                    height: 150,
-                    width: 100,
-                  ),
-                  Text(
-                    'T-Shirt ',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  Text(
-                    '\$30',
-                    style: TextStyle(color: Colors.pink.withOpacity(1)),
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Screen2(),
-                  ),
-                );
-              },
-              child: Container(
-                height: 50,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    'BUY NOW',
-                    style: TextStyle(color: Colors.white),
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                    child: Text(
+                      'BUY NOW',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
+//   Align favIcon() {
+//     return
+//   }
 }
