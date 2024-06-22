@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:grid_view_builder/screen3.dart';
 
-class Screen2 extends StatelessWidget {
+class Screen2 extends StatefulWidget {
   final name;
   final price;
   final image;
@@ -11,6 +12,13 @@ class Screen2 extends StatelessWidget {
       required this.name,
       required this.price,
       required this.image});
+
+  @override
+  State<Screen2> createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
+  List sized = ['32', '33', '34', '35'];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,7 @@ class Screen2 extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            name,
+            widget.name,
             style: TextStyle(
                 color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -63,7 +71,7 @@ class Screen2 extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    name,
+                    widget.name,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 30,
@@ -73,15 +81,15 @@ class Screen2 extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    price,
+                    widget.price,
                     style: TextStyle(
-                        color: Colors.black,
+                        color: const Color.fromARGB(255, 65, 51, 51),
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
                   Center(
                     child: Image.asset(
-                      image,
+                      widget.image,
                       height: 300,
                       width: 300,
                     ),
@@ -110,92 +118,35 @@ class Screen2 extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black)),
-                  child: Center(
-                    child: Text(
-                      '30',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black)),
+                    child: Center(
+                      child: Text(
+                        sized[index],
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black)),
-                  child: Center(
-                    child: Text(
-                      '31',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black)),
-                  child: Center(
-                    child: Text(
-                      '32',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black)),
-                  child: Center(
-                    child: Text(
-                      '33',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             GestureDetector(
               onTap: () {

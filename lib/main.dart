@@ -79,10 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: GridView.builder(
           itemCount: 5,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 20,
-              childAspectRatio: 1 / 1.5),
+              crossAxisCount: 2, childAspectRatio: 1 / 1.5),
           itemBuilder: (context, index) => Column(
             children: [
               Container(
